@@ -23,8 +23,8 @@ Webseite für den Punktestand eines Fußballquiz
    (Benutzername und Passwort an Ihre lokale PostgreSQL-Installation anpassen!)
 
 ```
-# Database Configuration für lokale PostgreSQL
-POSTGRES_HOST=localhost
+# Database Configuration
+POSTGRES_HOST=host.docker.internal
 POSTGRES_PORT=5432
 POSTGRES_DB=fussballquiz
 POSTGRES_USER=postgres
