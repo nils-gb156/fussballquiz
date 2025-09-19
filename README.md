@@ -4,27 +4,31 @@ Webseite für den Punktestand eines Fußballquiz
 ## Setup
 
 ### Voraussetzungen
-- Docker und Docker Compose
-- Node.js (für lokale Entwicklung)
+- Docker installiert
+- PostGRE SQL Version 15 installiert
+- pgAdmin installiert
 
 ### Installation
 
 1. Repository klonen:
-```bash
-git clone https://github.com/nils-gb156/fussballquiz.git
-cd fussballquiz
-```
 
-2. Umgebungsvariablen konfigurieren:
-```bash
-cp .env
-```
+2. Datenbank anlegen
+   - pgAdmin4 öffnen
+   - Verbindung zu Ihrer lokalen PostgreSQL-Installation herstellen
+   - Neue Datenbank "fussballquiz" anlegen
+   - SQL-Script aus `postgres-init/init.sql` in der neuen Datenbank ausführen
 
-3. Bearbeiten Sie die `.env` Datei und setzen Sie sichere Passwörter:
+3. Datenbankverbindung konfigurieren
+   Neue Datei `.env` im Projektverzeichnis anlegen mit folgendem Inhalt:
+   (Benutzername und Passwort an Ihre lokale PostgreSQL-Installation anpassen!)
+
 ```
-POSTGRES_PASSWORD=ihr_sicheres_passwort
-PGADMIN_DEFAULT_EMAIL=ihre_email@example.com
-PGADMIN_DEFAULT_PASSWORD=ihr_pgadmin_passwort
+# Database Configuration für lokale PostgreSQL
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5432
+POSTGRES_DB=fussballquiz
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=lokales_passwort
 ```
 
 4. Docker Container starten:
@@ -32,19 +36,11 @@ PGADMIN_DEFAULT_PASSWORD=ihr_pgadmin_passwort
 docker-compose up -d
 ```
 
+**Hinweis**: Das Projekt verwendet nur Docker für die Node.js-App. PostgreSQL und pgAdmin laufen lokal auf Ihrem System.
+
 ### Zugriff
 
 - **Anwendung**: http://localhost:4000
-- **PgAdmin**: http://localhost:8085
-
-### Entwicklung
-
-Für die Entwicklung können Sie die Container im Development-Modus starten:
-```bash
-docker-compose up
-```
-
-Die Anwendung wird automatisch neu geladen, wenn Sie Dateien ändern.
 
 ### Datenbank
 
